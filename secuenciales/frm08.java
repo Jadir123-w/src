@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class frm06 extends JFrame {
-    JTextField txtAltura,txtRadio, txtArea, txtVolumen;
+public class frm08 extends JFrame {
+    JTextField txtAltura,txtRadio, txtAreaL, txtAreaB, txtAreaT;
 
 	/**
 	 * Launch the application.
@@ -22,7 +22,7 @@ public class frm06 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm06 frame = new frm06();
+					frm08 frame = new frm08();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class frm06 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm06() {
+	public frm08() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 00, 300, 400);
         setLayout(null);
@@ -49,13 +49,17 @@ public class frm06 extends JFrame {
         lblRadio.setBounds(50,90,80,30);
         getContentPane().add(lblRadio);
 
-        JLabel lblArea = new JLabel("Area :");
-        lblArea.setBounds(50,130,80,30);
-        getContentPane().add(lblArea);
+        JLabel lblAreaL = new JLabel("Area Lateral :");
+        lblAreaL.setBounds(50,130,80,30);
+        getContentPane().add(lblAreaL);
 
-        JLabel lblVolumen = new JLabel("Volumen :");
-        lblVolumen.setBounds(50,170,80,30);
-        getContentPane().add(lblVolumen);
+        JLabel lblAreaB = new JLabel("Area Base :");
+        lblAreaB.setBounds(50,170,80,30);
+        getContentPane().add(lblAreaB);
+        
+        JLabel lblAreaT = new JLabel("Area Total :");
+        lblAreaT.setBounds(50,210,80,30);
+        getContentPane().add(lblAreaT);
 
         txtAltura = new JTextField();
         txtAltura.setBounds(130,50,100,30);
@@ -69,23 +73,30 @@ public class frm06 extends JFrame {
         txtRadio.setMargin(new Insets(5,5,5,5));
         getContentPane().add(txtRadio);
 
-        txtArea = new JTextField();
-        txtArea.setBounds(130,130,100,30);
-        txtArea.setFocusable(false);
-        txtArea.setHorizontalAlignment(SwingConstants.RIGHT);
-        txtArea.setMargin(new Insets(5,5,5,5));
-        getContentPane().add(txtArea);
+        txtAreaL = new JTextField();
+        txtAreaL.setBounds(130,130,100,30);
+        txtAreaL.setFocusable(false);
+        txtAreaL.setHorizontalAlignment(SwingConstants.RIGHT);
+        txtAreaL.setMargin(new Insets(5,5,5,5));
+        getContentPane().add(txtAreaL);
 
-        txtVolumen = new JTextField();
-        txtVolumen.setBounds(130,170,100,30);
-        txtVolumen.setFocusable(false);
-        txtVolumen.setHorizontalAlignment(SwingConstants.RIGHT);
-        txtVolumen.setMargin(new Insets(5,5,5,5));
-        getContentPane().add(txtVolumen);
+        txtAreaB = new JTextField();
+        txtAreaB.setBounds(130,170,100,30);
+        txtAreaB.setFocusable(false);
+        txtAreaB.setHorizontalAlignment(SwingConstants.RIGHT);
+        txtAreaB.setMargin(new Insets(5,5,5,5));
+        getContentPane().add(txtAreaB);
+
+        txtAreaT = new JTextField();
+        txtAreaT.setBounds(130,210,100,30);
+        txtAreaT.setFocusable(false);
+        txtAreaT.setHorizontalAlignment(SwingConstants.RIGHT);
+        txtAreaT.setMargin(new Insets(5,5,5,5));
+        getContentPane().add(txtAreaT);
 
         
         JButton btnCalcular = new JButton("Calcular");
-        btnCalcular.setBounds(100,280,100,30);
+        btnCalcular.setBounds(100,290,100,30);
         btnCalcular.setMnemonic('a');
         getContentPane().add(btnCalcular);
 
@@ -102,11 +113,13 @@ public class frm06 extends JFrame {
 		int altura = Integer.parseInt( txtAltura.getText() );
         int radio = Integer.parseInt( txtRadio.getText() );
 
-        double area = 2*Math.PI * radio * (radio + altura);
-        double volumen = Math.PI * Math.pow(radio, 2)* altura;
+        double AreaB = Math.PI * Math.pow(radio, 2);
+        double AreaL = 2 * Math.PI * altura;
+        double AreaT = 2 * AreaB * AreaL;
 
         DecimalFormat df = new DecimalFormat("###.00");
-        txtArea.setText(df.format(area));
-        txtVolumen.setText(df.format(volumen));
+        txtAreaL.setText(df.format(AreaL));
+        txtAreaB.setText(df.format(AreaB));
+        txtAreaT.setText(df.format(AreaT));
 	}
 }

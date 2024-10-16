@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class frm06 extends JFrame {
-    JTextField txtAltura,txtRadio, txtArea, txtVolumen;
+public class frm07 extends JFrame {
+    JTextField txtAltura,txtBase, txtArea, txtPerimetro;
 
 	/**
 	 * Launch the application.
@@ -22,7 +22,7 @@ public class frm06 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frm06 frame = new frm06();
+					frm07 frame = new frm07();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class frm06 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frm06() {
+	public frm07() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 00, 300, 400);
         setLayout(null);
@@ -45,17 +45,17 @@ public class frm06 extends JFrame {
         getContentPane().add(lblAltura);
 
         
-        JLabel lblRadio = new JLabel("Radio :");
-        lblRadio.setBounds(50,90,80,30);
-        getContentPane().add(lblRadio);
+        JLabel lblBase = new JLabel("Base :");
+        lblBase.setBounds(50,90,80,30);
+        getContentPane().add(lblBase);
 
         JLabel lblArea = new JLabel("Area :");
         lblArea.setBounds(50,130,80,30);
         getContentPane().add(lblArea);
 
-        JLabel lblVolumen = new JLabel("Volumen :");
-        lblVolumen.setBounds(50,170,80,30);
-        getContentPane().add(lblVolumen);
+        JLabel lblPerimetro = new JLabel("Perimetro :");
+        lblPerimetro.setBounds(50,170,80,30);
+        getContentPane().add(lblPerimetro);
 
         txtAltura = new JTextField();
         txtAltura.setBounds(130,50,100,30);
@@ -63,11 +63,11 @@ public class frm06 extends JFrame {
         txtAltura.setMargin(new Insets(5,5,5,5));
         getContentPane().add(txtAltura);
 
-        txtRadio = new JTextField();
-        txtRadio.setBounds(130,90,100,30);
-        txtRadio.setHorizontalAlignment(SwingConstants.RIGHT);
-        txtRadio.setMargin(new Insets(5,5,5,5));
-        getContentPane().add(txtRadio);
+        txtBase = new JTextField();
+        txtBase.setBounds(130,90,100,30);
+        txtBase.setHorizontalAlignment(SwingConstants.RIGHT);
+        txtBase.setMargin(new Insets(5,5,5,5));
+        getContentPane().add(txtBase);
 
         txtArea = new JTextField();
         txtArea.setBounds(130,130,100,30);
@@ -76,12 +76,12 @@ public class frm06 extends JFrame {
         txtArea.setMargin(new Insets(5,5,5,5));
         getContentPane().add(txtArea);
 
-        txtVolumen = new JTextField();
-        txtVolumen.setBounds(130,170,100,30);
-        txtVolumen.setFocusable(false);
-        txtVolumen.setHorizontalAlignment(SwingConstants.RIGHT);
-        txtVolumen.setMargin(new Insets(5,5,5,5));
-        getContentPane().add(txtVolumen);
+        txtPerimetro = new JTextField();
+        txtPerimetro.setBounds(130,170,100,30);
+        txtPerimetro.setFocusable(false);
+        txtPerimetro.setHorizontalAlignment(SwingConstants.RIGHT);
+        txtPerimetro.setMargin(new Insets(5,5,5,5));
+        getContentPane().add(txtPerimetro);
 
         
         JButton btnCalcular = new JButton("Calcular");
@@ -100,13 +100,13 @@ public class frm06 extends JFrame {
 
 	protected void btnCalcular_actionPerformed() {
 		int altura = Integer.parseInt( txtAltura.getText() );
-        int radio = Integer.parseInt( txtRadio.getText() );
+        int base = Integer.parseInt( txtBase.getText() );
 
-        double area = 2*Math.PI * radio * (radio + altura);
-        double volumen = Math.PI * Math.pow(radio, 2)* altura;
+        double area = altura * base;
+        double Perimetro = 2 * (base+altura) ;
 
         DecimalFormat df = new DecimalFormat("###.00");
         txtArea.setText(df.format(area));
-        txtVolumen.setText(df.format(volumen));
+        txtPerimetro.setText(df.format(Perimetro));
 	}
 }
